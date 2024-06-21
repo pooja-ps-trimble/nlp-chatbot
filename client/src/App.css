@@ -1,0 +1,20 @@
+
+.get-url{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.en-btn{
+   width: 60px;
+   height: 40px;
+   border-radius: 5px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color:rgb(182, 112, 230) !important;
+}
+
+.action-items{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}

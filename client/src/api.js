@@ -17,18 +17,17 @@ export const fetchResponse = async (chat) => {
     }
 }
 
-async function postData() {
+export async function postData(urls) {
     const url = 'http://127.0.0.1:8000/geturlsummary/';
-    const data = { url: "https://example.com" };
-
+    const data = { urls: urls };
+    console.log(data)
     try {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data) // Convert the data object to a JSON string
         });
 
         if (!response.ok) {
@@ -37,7 +36,33 @@ async function postData() {
 
         const jsonResponse = await response.json();
         console.log('Response:', jsonResponse);
+        return jsonResponse
     } catch (error) {
         console.error('Error:', error);
+        return null
+    }
+}
+
+
+export async function deleteIndex(urls) {
+    const url = 'http://127.0.0.1:8000/deleteIndex/';
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const jsonResponse = await response.json();
+        console.log('Response:', jsonResponse);
+        return jsonResponse
+    } catch (error) {
+        console.error('Error:', error);
+        return null
     }
 }
